@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCAA Unit 3 Topic 2: Functioning Ecosystems & Succession</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #ecfdf5 0%, #dbeafe 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .header-card h1 {
+            color: #1f2937;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #059669;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 32px;
+        }
+
+        .section-title {
+            color: #1f2937;
+            font-size: 28px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #059669;
+        }
+
+        .question-block {
+            border-left: 4px solid #34d399;
+            padding-left: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin-bottom: 32px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .option-button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+
+        .option-button:hover:not(:disabled) {
+            border-color: #34d399;
+            background: #ecfdf5;
+        }
+
+        .option-button:disabled {
+            cursor: not-allowed;
+        }
+
+        .option-correct {
+            border-color: #10b981;
+            background: #d1fae5;
+        }
+
+        .option-incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .option-neutral {
+            background: #f9fafb;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 16px;
+            background: #ecfdf5;
+            border: 1px solid #6ee7b7;
+            border-radius: 8px;
+        }
+
+        .feedback-box p {
+            color: #065f46;
+            font-size: 14px;
+        }
+
+        .feedback-label {
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #34d399;
+        }
+
+        .show-answer-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+
+        .show-answer-btn:hover {
+            background: #047857;
+        }
+
+        .model-answer-box {
+            margin-top: 12px;
+            padding: 16px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+        }
+
+        .model-answer-box .label {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .model-answer-box p {
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .key-concepts-box {
+            margin-top: 32px;
+            padding: 20px;
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+        }
+
+        .key-concepts-box h3 {
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .key-concepts-box ul {
+            list-style: none;
+        }
+
+        .key-concepts-box li {
+            color: #374151;
+            font-size: 14px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .key-concepts-box li:before {
+            content: "\2192";
+            position: absolute;
+            left: 0;
+            color: #d97706;
+        }
+
+        .next-button {
+            width: 100%;
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 32px;
+            transition: background 0.2s;
+        }
+
+        .next-button:hover {
+            background: #047857;
+        }
+
+        .completion-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+
+        .completion-title {
+            text-align: center;
+            font-size: 32px;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .completion-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+
+        .results-box {
+            background: #ecfdf5;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .results-box h2 {
+            color: #1f2937;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .results-box .score {
+            font-size: 18px;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .results-box .score-value {
+            font-weight: 700;
+        }
+
+        .summary-box {
+            background: #f0fdf4;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .summary-box h2 {
+            color: #1f2937;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .summary-box ul {
+            list-style: none;
+        }
+
+        .summary-box li {
+            color: #374151;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .summary-box li:before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-size: 20px;
+        }
+
+        .restart-button {
+            width: 100%;
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .restart-button:hover {
+            background: #047857;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-card" id="headerCard">
+            <h1>QCAA Unit 3 Topic 2: Functioning Ecosystems & Succession</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">Section 1 of 5</p>
+        </div>
+
+        <div class="content-card" id="contentCard"></div>
+    </div>
+
+    <script>
+        var sections = [
+            {
+                title: "Section 1: Ecosystem Structure & Energy Flow",
+                questions: [
+                    {
+                        id: 'eco1',
+                        type: 'mcq',
+                        question: "In a Queensland rainforest ecosystem, energy enters primarily through:",
+                        options: ["Decomposers breaking down leaf litter", "Photosynthesis by plants and algae", "Chemosynthesis by bacteria", "Cellular respiration by animals"],
+                        correct: 1,
+                        explanation: "Energy enters ecosystems primarily through photosynthesis, where producers (plants and algae) convert light energy into chemical energy stored in organic compounds."
+                    },
+                    {
+                        id: 'eco2',
+                        type: 'mcq',
+                        question: "As energy flows through trophic levels in a Great Barrier Reef food chain, approximately what percentage is transferred to the next level?",
+                        options: ["90%", "50%", "10%", "1%"],
+                        correct: 2,
+                        explanation: "Only approximately 10% of energy is transferred between trophic levels. The remaining 90% is lost as heat through cellular respiration, movement, and other metabolic processes."
+                    },
+                    {
+                        id: 'eco3',
+                        type: 'mcq',
+                        question: "Which organisms are responsible for returning nutrients from dead organisms back into the ecosystem?",
+                        options: ["Primary consumers", "Secondary consumers", "Decomposers and detritivores", "Producers"],
+                        correct: 2,
+                        explanation: "Decomposers (bacteria and fungi) and detritivores break down dead organic matter, releasing nutrients back into the soil and water for reuse by producers."
+                    },
+                    {
+                        id: 'eco4',
+                        type: 'short',
+                        question: "Explain why food chains in Australian ecosystems rarely exceed 4-5 trophic levels. (3 marks)",
+                        modelAnswer: "Food chains rarely exceed 4-5 trophic levels because: (1) Only about 10% of energy is transferred between each trophic level, with 90% lost as heat; (2) After 4-5 transfers, insufficient energy remains to support another trophic level; (3) The biomass at higher trophic levels becomes too small to sustain viable populations of top predators."
+                    },
+                    {
+                        id: 'eco5',
+                        type: 'short',
+                        question: "Compare the roles of producers and decomposers in ecosystem functioning. (3 marks)",
+                        modelAnswer: "Producers (e.g., eucalyptus trees, phytoplankton) convert light energy into chemical energy through photosynthesis, creating organic compounds that form the base of food webs. Decomposers (bacteria, fungi) break down dead organic matter, releasing nutrients back into the ecosystem for reuse by producers. Both are essential: producers capture energy, while decomposers recycle nutrients, maintaining ecosystem sustainability."
+                    }
+                ],
+                keyConcepts: [
+                    "Energy enters ecosystems through photosynthesis by producers",
+                    "Only ~10% of energy transfers between trophic levels (90% lost as heat)",
+                    "Energy flows one-way through ecosystems (cannot be recycled)",
+                    "Decomposers return nutrients to the ecosystem through decomposition",
+                    "Food chains are limited to 4-5 levels due to energy loss"
+                ]
+            },
+            {
+                title: "Section 2: Nutrient Cycles",
+                questions: [
+                    {
+                        id: 'nut1',
+                        type: 'mcq',
+                        question: "In the carbon cycle, which process removes carbon dioxide from the atmosphere?",
+                        options: ["Cellular respiration", "Combustion of fossil fuels", "Photosynthesis", "Decomposition"],
+                        correct: 2,
+                        explanation: "Photosynthesis removes CO2 from the atmosphere as plants and algae use it to produce glucose (C6H12O6) and oxygen."
+                    },
+                    {
+                        id: 'nut2',
+                        type: 'mcq',
+                        question: "Nitrogen-fixing bacteria in the root nodules of Australian wattle trees (Acacia) convert atmospheric nitrogen into:",
+                        options: ["Nitrates (NO3-)", "Ammonia (NH3)", "Nitrogen gas (N2)", "Nitrites (NO2-)"],
+                        correct: 1,
+                        explanation: "Nitrogen-fixing bacteria convert atmospheric nitrogen (N2) into ammonia (NH3), which plants can then use. This is the first step of nitrogen fixation."
+                    },
+                    {
+                        id: 'nut3',
+                        type: 'mcq',
+                        question: "Which process in the water cycle involves water vapor changing directly to liquid water?",
+                        options: ["Evaporation", "Transpiration", "Condensation", "Precipitation"],
+                        correct: 2,
+                        explanation: "Condensation is the process where water vapor cools and changes into liquid water, forming clouds and fog."
+                    },
+                    {
+                        id: 'nut4',
+                        type: 'mcq',
+                        question: "In phosphorus cycling in Australian soils, which statement is correct?",
+                        options: ["Phosphorus has a significant atmospheric component", "Phosphorus cycles rapidly through the atmosphere", "Phosphorus cycles primarily through rocks, soil, and living organisms", "Phosphorus is fixed by bacteria in the atmosphere"],
+                        correct: 2,
+                        explanation: "Unlike carbon and nitrogen, phosphorus has no significant atmospheric component. It cycles slowly through rocks (weathering), soil, and living organisms."
+                    },
+                    {
+                        id: 'nut5',
+                        type: 'short',
+                        question: "Describe the role of denitrifying bacteria in nitrogen cycling and explain how this affects soil fertility in Australian agricultural systems. (4 marks)",
+                        modelAnswer: "Denitrifying bacteria convert nitrates (NO3-) in soil back to atmospheric nitrogen gas (N2) under anaerobic conditions: (1) This process removes nitrogen from the soil, making it unavailable to plants; (2) Occurs in waterlogged or compacted soils with low oxygen; (3) Reduces soil fertility as nitrogen is essential for plant growth; (4) Australian farmers manage this by improving drainage and avoiding over-irrigation to maintain aerobic soil conditions and preserve nitrogen for crops."
+                    },
+                    {
+                        id: 'nut6',
+                        type: 'short',
+                        question: "Explain how deforestation of Queensland rainforests affects the carbon cycle. (3 marks)",
+                        modelAnswer: "Deforestation affects the carbon cycle by: (1) Reducing photosynthesis, so less CO2 is removed from the atmosphere; (2) Releasing stored carbon as trees are burned or decay, increasing atmospheric CO2; (3) Decreasing carbon storage capacity as mature forests store large amounts of carbon in biomass and soil, contributing to increased greenhouse gas concentrations and climate change."
+                    }
+                ],
+                keyConcepts: [
+                    "Carbon cycle: photosynthesis removes CO2, respiration/combustion releases it",
+                    "Nitrogen fixation: bacteria convert N2 to NH3 for plant use",
+                    "Nitrification: NH3 \u2192 NO2- \u2192 NO3- (by bacteria)",
+                    "Denitrification: NO3- \u2192 N2 (returns nitrogen to atmosphere)",
+                    "Phosphorus cycles through rocks/soil (no atmospheric component)"
+                ]
+            },
+            {
+                title: "Section 3: Food Webs & Trophic Levels",
+                questions: [
+                    {
+                        id: 'web1',
+                        type: 'mcq',
+                        question: "In a eucalyptus forest food web, koalas are classified as:",
+                        options: ["Producers", "Primary consumers", "Secondary consumers", "Decomposers"],
+                        correct: 1,
+                        explanation: "Koalas eat eucalyptus leaves (producers), making them herbivores and primary consumers (first order consumers)."
+                    },
+                    {
+                        id: 'web2',
+                        type: 'mcq',
+                        question: "A wedge-tailed eagle that feeds on rabbits, snakes, and lizards occupies which trophic level(s)?",
+                        options: ["Only secondary consumer", "Only tertiary consumer", "Both secondary and tertiary consumer", "Primary consumer"],
+                        correct: 2,
+                        explanation: "The eagle occupies multiple trophic levels: secondary consumer when eating herbivorous rabbits, and tertiary consumer when eating carnivorous snakes that ate other animals."
+                    },
+                    {
+                        id: 'web3',
+                        type: 'mcq',
+                        question: "Which best describes the advantage of food webs over food chains?",
+                        options: ["Food webs show more energy is available", "Food webs show the complexity of feeding relationships in ecosystems", "Food webs demonstrate that energy is recycled", "Food webs prove all organisms eat multiple food sources"],
+                        correct: 1,
+                        explanation: "Food webs show the complex interconnections between multiple food chains in an ecosystem, revealing how organisms have multiple food sources and the ecosystem's stability."
+                    },
+                    {
+                        id: 'web4',
+                        type: 'short',
+                        question: "Predict what would happen to a Great Barrier Reef ecosystem if crown-of-thorns starfish (coral predators) populations dramatically increased. (4 marks)",
+                        modelAnswer: "If crown-of-thorns starfish increase: (1) Coral populations would decrease due to increased predation; (2) Fish and organisms dependent on coral for shelter and food would decline; (3) Algae might initially increase without coral competition for space; (4) Overall biodiversity would decrease as the coral reef structure degrades, affecting the entire food web from primary producers to top predators. This demonstrates the interconnected nature of food webs."
+                    },
+                    {
+                        id: 'web5',
+                        type: 'short',
+                        question: "Analyse why the removal of a top predator like the dingo can cause a trophic cascade in Australian ecosystems. (3 marks)",
+                        modelAnswer: "Removal of top predators causes trophic cascades: (1) Without dingo predation, mesopredator populations (foxes, cats) increase unchecked; (2) Increased mesopredators cause herbivore populations (small mammals, birds) to decline dramatically; (3) Reduced herbivory allows some plant species to dominate while overgrazing occurs in other areas, altering vegetation community structure and overall ecosystem balance throughout all trophic levels."
+                    }
+                ],
+                keyConcepts: [
+                    "Trophic levels: producers \u2192 primary consumers \u2192 secondary consumers \u2192 tertiary consumers",
+                    "Food webs show complex interconnected feeding relationships",
+                    "Organisms can occupy multiple trophic levels",
+                    "Trophic cascades occur when top predators are removed",
+                    "Food web complexity increases ecosystem stability"
+                ]
+            },
+            {
+                title: "Section 4: Ecological Pyramids & Productivity",
+                questions: [
+                    {
+                        id: 'pyr1',
+                        type: 'mcq',
+                        question: "In a pyramid of energy for an Australian woodland, which level contains the most energy?",
+                        options: ["Tertiary consumers", "Secondary consumers", "Primary consumers", "Producers"],
+                        correct: 3,
+                        explanation: "Producers always contain the most energy in a pyramid of energy because they capture energy from the sun. Energy decreases at each subsequent trophic level."
+                    },
+                    {
+                        id: 'pyr2',
+                        type: 'mcq',
+                        question: "Gross Primary Productivity (GPP) minus Respiration (R) equals:",
+                        options: ["Secondary productivity", "Gross Secondary Productivity", "Net Primary Productivity (NPP)", "Total ecosystem productivity"],
+                        correct: 2,
+                        explanation: "NPP = GPP - R. Net Primary Productivity is the energy remaining after producers use some for their own cellular respiration. This energy is available to consumers."
+                    },
+                    {
+                        id: 'pyr3',
+                        type: 'mcq',
+                        question: "A pyramid of biomass in an ocean ecosystem might be inverted (top-heavy) because:",
+                        options: ["Marine animals are very large", "Phytoplankton reproduce very rapidly despite small biomass", "Energy is unlimited in ocean ecosystems", "Decomposers are absent"],
+                        correct: 1,
+                        explanation: "Phytoplankton have rapid turnover rates - they reproduce quickly and are eaten quickly. At any moment, their biomass is small, but their productivity is high, supporting larger consumer biomass."
+                    },
+                    {
+                        id: 'pyr4',
+                        type: 'short',
+                        question: "Compare pyramids of numbers, biomass, and energy for a eucalyptus forest ecosystem. (4 marks)",
+                        modelAnswer: "Pyramid of numbers: may be irregular - one eucalyptus tree supports many insects, few birds; irregular shape. Pyramid of biomass: typically pyramid-shaped, with greatest biomass in trees (producers), decreasing through herbivores to carnivores. Pyramid of energy: always pyramid-shaped, showing decreasing energy at each trophic level due to 10% rule; never inverted. Energy pyramids are most reliable as they account for productivity over time, not just standing crop."
+                    },
+                    {
+                        id: 'pyr5',
+                        type: 'short',
+                        question: "Explain why tropical rainforests in far north Queensland have higher Net Primary Productivity than temperate forests in Tasmania. (3 marks)",
+                        modelAnswer: "Tropical rainforests have higher NPP because: (1) Year-round warm temperatures increase enzyme activity and photosynthesis rates; (2) High rainfall provides abundant water for photosynthesis throughout the year; (3) Intense sunlight near the equator provides more light energy for photosynthesis. Temperate forests have seasonal limitations with cold winters reducing photosynthesis, resulting in lower annual NPP."
+                    }
+                ],
+                keyConcepts: [
+                    "Pyramid of energy always pyramid-shaped (10% rule applies)",
+                    "NPP = GPP - R (energy available to consumers)",
+                    "Pyramid of biomass can be inverted in aquatic ecosystems",
+                    "Productivity varies with temperature, water, light availability",
+                    "Tropical ecosystems generally have highest NPP"
+                ]
+            },
+            {
+                title: "Section 5: Ecological Succession & Disturbance",
+                questions: [
+                    {
+                        id: 'suc1',
+                        type: 'mcq',
+                        question: "After a bushfire completely destroys a section of Australian bushland, the regrowth process is an example of:",
+                        options: ["Primary succession", "Secondary succession", "Climax community formation", "Pioneer succession"],
+                        correct: 1,
+                        explanation: "Secondary succession occurs when soil remains after disturbance (fire, flood, logging). The ecosystem recovers faster than primary succession because soil and seed banks are present."
+                    },
+                    {
+                        id: 'suc2',
+                        type: 'mcq',
+                        question: "Which organisms are typically the first to colonize bare rock in primary succession?",
+                        options: ["Grasses and small shrubs", "Lichens and mosses", "Large trees", "Decomposer bacteria"],
+                        correct: 1,
+                        explanation: "Lichens and mosses are pioneer species in primary succession. They can survive on bare rock, begin soil formation through weathering, and create conditions for other species."
+                    },
+                    {
+                        id: 'suc3',
+                        type: 'mcq',
+                        question: "A climax community in an ecosystem is characterized by:",
+                        options: ["Rapid species turnover", "Dominance of pioneer species", "High biodiversity and relative stability", "Absence of decomposers"],
+                        correct: 2,
+                        explanation: "Climax communities are mature, stable ecosystems with high biodiversity, complex food webs, and species composition that remains relatively constant unless disturbed."
+                    },
+                    {
+                        id: 'suc4',
+                        type: 'mcq',
+                        question: "After volcanic activity created new land on an Australian island, which succession stage would occur first?",
+                        options: ["Shrub stage", "Climax forest", "Pioneer species colonization", "Grass stage"],
+                        correct: 2,
+                        explanation: "Pioneer species (lichens, mosses) colonize first in primary succession on new land with no soil. They break down rock and begin soil formation."
+                    },
+                    {
+                        id: 'suc5',
+                        type: 'short',
+                        question: "Describe the process of secondary succession in a Queensland rainforest after logging, including the pioneer, intermediate, and climax stages. (5 marks)",
+                        modelAnswer: "Pioneer stage: Fast-growing grasses, ferns, and wattle trees colonize cleared area within months, using existing soil and seed bank. Intermediate stage: Shade-tolerant shrubs and small trees establish, increasing height and complexity over 10-50 years. Late intermediate: Taller trees dominate, shading out pioneer species. Climax stage: Mature rainforest develops with tall canopy trees, high biodiversity, complex stratification, and relative stability (100+ years). Each stage modifies conditions, facilitating the next."
+                    },
+                    {
+                        id: 'suc6',
+                        type: 'short',
+                        question: "Explain why some Australian ecosystems, such as eucalyptus forests, depend on periodic fire disturbance to maintain biodiversity. (3 marks)",
+                        modelAnswer: "Many Australian ecosystems are fire-adapted: (1) Fire removes accumulated leaf litter and dense undergrowth, preventing catastrophic burns and reducing competition; (2) Some native plant species require fire for seed germination (e.g., banksias) and regeneration; (3) Fire creates habitat diversity by maintaining a mosaic of different successional stages, supporting various species with different habitat requirements, thus maintaining overall biodiversity."
+                    }
+                ],
+                keyConcepts: [
+                    "Primary succession = colonization of lifeless substrate (no soil)",
+                    "Secondary succession = recovery after disturbance (soil remains)",
+                    "Pioneer species colonize first, modify environment for others",
+                    "Climax community = stable, mature ecosystem endpoint",
+                    "Disturbance can increase biodiversity by creating habitat mosaics"
+                ]
+            }
+        ];
+
+        var currentSection = 0;
+        var answers = {};
+        var showFeedback = {};
+
+        function updateProgress() {
+            var progress = ((currentSection + 1) / sections.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 'Section ' + (currentSection + 1) + ' of ' + sections.length;
+        }
+
+        function renderSection() {
+            var section = sections[currentSection];
+            var html = '<h2 class="section-title">' + section.title + '</h2>';
+
+            for (var i = 0; i < section.questions.length; i++) {
+                var q = section.questions[i];
+                html += '<div class="question-block"><p class="question-text">' + q.question + '</p>';
+                
+                if (q.type === 'mcq') {
+                    html += '<div class="options">';
+                    for (var j = 0; j < q.options.length; j++) {
+                        var opt = q.options[j];
+                        var isSelected = answers[q.id] === j;
+                        var isCorrect = j === q.correct;
+                        var className = 'option-button';
+                        
+                        if (showFeedback[q.id]) {
+                            if (isCorrect) className += ' option-correct';
+                            else if (isSelected) className += ' option-incorrect';
+                            else className += ' option-neutral';
+                        }
+                        
+                        var disabled = showFeedback[q.id] ? ' disabled' : '';
+                        html += '<button class="' + className + '" onclick="handleMCQ(\'' + q.id + '\',' + j + ',' + q.correct + ')"' + disabled + '>' + opt + '</button>';
+                    }
+                    html += '</div>';
+                    
+                    if (showFeedback[q.id]) {
+                        html += '<div class="feedback-box"><p><span class="feedback-label">Explanation:</span> ' + q.explanation + '</p></div>';
+                    }
+                } else {
+                    var val = answers[q.id] || '';
+                    html += '<textarea id="ta_' + q.id + '" onchange="handleShort(\'' + q.id + '\')" placeholder="Type your answer here...">' + val + '</textarea>';
+                    html += '<button class="show-answer-btn" onclick="toggleModel(\'' + q.id + '\')">' + (showFeedback[q.id] ? 'Hide' : 'Show') + ' Model Answer</button>';
+                    
+                    if (showFeedback[q.id]) {
+                        html += '<div class="model-answer-box"><p class="label">Model Answer:</p><p>' + q.modelAnswer + '</p></div>';
+                    }
+                }
+                
+                html += '</div>';
+            }
+
+            html += '<div class="key-concepts-box"><h3>Key Concepts for this Section:</h3><ul>';
+            for (var k = 0; k < section.keyConcepts.length; k++) {
+                html += '<li>' + section.keyConcepts[k] + '</li>';
+            }
+            html += '</ul></div>';
+
+            var btnText = currentSection < sections.length - 1 ? 'Next Section' : 'Complete Activity';
+            html += '<button class="next-button" onclick="nextSection()">' + btnText + ' \u2192</button>';
+
+            document.getElementById('contentCard').innerHTML = html;
+            window.scrollTo(0, 0);
+        }
+
+        function renderCompletion() {
+            var totalMCQ = 0;
+            var correctMCQ = 0;
+
+            for (var i = 0; i < sections.length; i++) {
+                for (var j = 0; j < sections[i].questions.length; j++) {
+                    var q = sections[i].questions[j];
+                    if (q.type === 'mcq') {
+                        totalMCQ++;
+                        if (answers[q.id] === q.correct) correctMCQ++;
+                    }
+                }
+            }
+
+            var html = '<div class="completion-icon">\u2713</div>';
+            html += '<h1 class="completion-title">Activity Complete!</h1>';
+            html += '<p class="completion-subtitle">You have completed all sections of Topic 2: Functioning Ecosystems & Succession</p>';
+            html += '<div class="results-box"><h2>Your Results</h2>';
+            html += '<p class="score">Multiple Choice: <span class="score-value">' + correctMCQ + '/' + totalMCQ + '</span> correct</p>';
+            html += '<p style="font-size:14px;color:#6b7280">Review your short answer responses using the model answers provided</p></div>';
+            html += '<div class="summary-box"><h2>Key Learning Summary</h2><p style="color:#374151;margin-bottom:16px">Essential concepts from Topic 2:</p><ul>';
+
+            for (var i = 0; i < sections.length; i++) {
+                for (var j = 0; j < sections[i].keyConcepts.length; j++) {
+                    html += '<li>' + sections[i].keyConcepts[j] + '</li>';
+                }
+            }
+
+            html += '</ul></div><button class="restart-button" onclick="restart()">\u21BB Restart Activity</button>';
+            document.getElementById('contentCard').innerHTML = html;
+            document.getElementById('headerCard').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function handleMCQ(qid, sel, cor) {
+            answers[qid] = sel;
+            showFeedback[qid] = true;
+            renderSection();
+        }
+
+        function handleShort(qid) {
+            answers[qid] = document.getElementById('ta_' + qid).value;
+        }
+
+        function toggleModel(qid) {
+            showFeedback[qid] = !showFeedback[qid];
+            renderSection();
+        }
+
+        function nextSection() {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                updateProgress();
+                renderSection();
+            } else {
+                renderCompletion();
+            }
+        }
+
+        function restart() {
+            currentSection = 0;
+            answers = {};
+            showFeedback = {};
+            document.getElementById('headerCard').classList.remove('hidden');
+            updateProgress();
+            renderSection();
+        }
+
+        updateProgress();
+        renderSection();
+    </script>
+</body>
+</html>
